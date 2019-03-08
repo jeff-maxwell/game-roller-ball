@@ -2,4 +2,4 @@
 
 Game Assignment in Unity for a Masters Course in Computer Science from Oklahoma State University (OSU) in Spring of 2019.
 
-Very simple game with a claw that drops rocks on characters that randomly rise and disapear at the bottom of the screen.
+This is a 3D game that rolls a ball through a maze and picks up cubes and points along the way.
