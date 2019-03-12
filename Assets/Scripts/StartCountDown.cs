@@ -38,9 +38,10 @@ public class StartCountDown : MonoBehaviour
             {
                 timeStarted = false;
                 GameObject countDownCanvas = GameObject.FindWithTag("CountDownCanvas");
-                countDownCanvas.SetActive(false);
+                var countDownCanvasGroup = countDownCanvas.GetComponent<CanvasGroup>();
+                countDownCanvasGroup.alpha = 0f;
 
-                countDownScript.StartCountDownTime(5);
+                countDownScript.StartCountDownTime(10);
             }
         }
     }

@@ -8,6 +8,8 @@ public class CountDown : MonoBehaviour
     // Initialize the time left to 90 seconds
     public static float timeLeft = 90f;
     public Text timeLeftText;
+    public Text gameOverTimeText;
+    public Text gameOverScoreText;
     public AudioClip gameOverSound;
 
     private static bool timerStarted;
@@ -43,11 +45,12 @@ public class CountDown : MonoBehaviour
                 timerStarted = false;
                 timeLeftText.text = $"Time Left: 00:00";
                 audioSource.PlayOneShot(gameOverSound);
-                GameObject quitCanvas = GameObject.FindWithTag("QuitCanvas");
-                var quitCanvasGroup = quitCanvas.GetComponent<CanvasGroup>();
-                quitCanvasGroup.alpha = 1f;
+                GameObject gameOverCanvas = GameObject.FindWithTag("GameOverCanvas");
+                var gameOverCanvasGroup = gameOverCanvas.GetComponent<CanvasGroup>();
+                gameOverCanvasGroup.alpha = 1f;
                 Game.formatedTime = timeLeftText.text;
-                //exitGameScript.GameOver();
+                gameOverScoreText.text = $"Score: {Game.score}";
+                gameOverTimeText.text = $"Time: {Game.formatedTime}";
             }
 
         }

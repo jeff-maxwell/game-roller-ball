@@ -9,6 +9,8 @@ TagManager:
   - CountDownCanvas
   - TimeRemainingText
   - QuitCanvas
+  - AllOrNothingText
+  - GameOverCanvas
   layers:
   - Default
   - TransparentFX

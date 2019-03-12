@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class QuitGameScreen : MonoBehaviour
 {
-    public Text scoreText;
-    public Text timeLeftText;
-
-    private void Start()
-    {
-        scoreText.text = $"Score: {Game.score}";
-        timeLeftText.text = $"Time: {Game.formatedTime}";
-    }
+    private StartCountDown startCountDownScript = new StartCountDown();
 
     public void OnQuitGameButton()
     {
         print("Quit Game");
         Application.Quit();
+    }
+
+    public void OnPlayAgainButton()
+    {
+        print("Play Again");
+//        Game.score = 0;
+//        startCountDownScript.StartCountDownTime(90);
     }
 }

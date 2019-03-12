@@ -13,11 +13,16 @@ public class Game : MonoBehaviour
     {
         AddCubes();
         GameObject countDownCanvas = GameObject.FindWithTag("CountDownCanvas");
-        countDownCanvas.SetActive(true);
+        var countDownCanvasGroup = countDownCanvas.GetComponent<CanvasGroup>();
+        countDownCanvasGroup.alpha = 1f;
 
         GameObject quitCanvas = GameObject.FindWithTag("QuitCanvas");
         var quitCanvasGroup = quitCanvas.GetComponent<CanvasGroup>();
         quitCanvasGroup.alpha = 0f;
+
+        GameObject allOrNothingText = GameObject.FindWithTag("AllOrNothingText");
+        var allOrNothingTextCanvasGroup = allOrNothingText.GetComponent<CanvasGroup>();
+        allOrNothingTextCanvasGroup.alpha = 0f;
     }
 
     public void AddCubes()
