@@ -11,6 +11,10 @@ TagManager:
   - QuitCanvas
   - AllOrNothingText
   - GameOverCanvas
+  - GameCube
+  - CountDownText
+  - GameScoreText
+  - AllOrNothingScoreText
   layers:
   - Default
   - TransparentFX

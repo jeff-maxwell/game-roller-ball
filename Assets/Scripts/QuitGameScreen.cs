@@ -5,18 +5,29 @@ using UnityEngine.UI;
 
 public class QuitGameScreen : MonoBehaviour
 {
-    private StartCountDown startCountDownScript = new StartCountDown();
+    private Game gameScript = new Game();
 
-    public void OnQuitGameButton()
+    public void OnQuitGameClick()
     {
-        print("Quit Game");
+        // Quit the Game
         Application.Quit();
     }
 
-    public void OnPlayAgainButton()
+    public void OnAllOrNothingClick()
     {
-        print("Play Again");
-//        Game.score = 0;
-//        startCountDownScript.StartCountDownTime(90);
+        // Increment the All or Nothing Score and display it
+        Game.allOrNothingScore += Game.score;
+        Text allOrNothingText = GameObject.FindWithTag("AllOrNothingText").GetComponent<Text>();
+        allOrNothingText.text = $"All Or Nothing: {Game.allOrNothingScore}";
+
+        // Reset the Score for the next game and display it
+        Game.score = 0;
+        Text scoreText = GameObject.FindWithTag("GameScoreText").GetComponent<Text>();
+        scoreText.text = $"Score: {Game.score}";
+
+        // Increament the round count
+        Game.round++;
+        // Call the ResetGame to reset everything and start a new game
+        gameScript.ResetGame();
     }
 }

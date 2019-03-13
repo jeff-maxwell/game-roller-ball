@@ -5,43 +5,50 @@ using UnityEngine.UI;
 
 public class StartCountDown : MonoBehaviour
 {
-    // Initialize the time left to 90 seconds
+    // Initialize time left
     public float timeLeft = 3.0f;
-    public Text timeLeftText;
+    private Text timeLeftText;
 
+    // Reference to CountDown Script
     private CountDown countDownScript = new CountDown();
-    private string formatedTime;
+    // Time Started Boolean for Count Down
     private bool timeStarted = true;
 
     void Start()
     {
-        StartCountDownTime(3);
+        // Initally call the Start Timer and start the count down clock
+        StartCountDownTime(timeLeft);
     }
 
-    public void StartCountDownTime(int countTime)
+    public void StartCountDownTime(float countTime)
     {
+        // Get a reference to the CountDownText UI element
+        timeLeftText = GameObject.FindWithTag("CountDownText").GetComponent<Text>();
         timeLeft = countTime;
         timeStarted = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (timeStarted)
         {
+            // Calculate the Time left decreasing by a second
             timeLeft -= 1 * Time.deltaTime;
             timeLeftText.text = timeLeft.ToString("0");
+
+            // If the time left is less than a second show "Go!!!!"
             if (timeLeft <= 1 && timeLeft > 0)
                 timeLeftText.text = "Go!!!!";
 
+            // If the time has run out hide the count down canvas and start
+            // the game timer
             if (timeLeft <= 0)
             {
                 timeStarted = false;
-                GameObject countDownCanvas = GameObject.FindWithTag("CountDownCanvas");
-                var countDownCanvasGroup = countDownCanvas.GetComponent<CanvasGroup>();
-                countDownCanvasGroup.alpha = 0f;
+                Canvas countDownCanvas = GameObject.FindWithTag("CountDownCanvas").GetComponent<Canvas>();
+                countDownCanvas.enabled = false;
 
-                countDownScript.StartCountDownTime(10);
+                countDownScript.StartCountDownTime();
             }
         }
     }
